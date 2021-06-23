@@ -35,17 +35,17 @@ app.get('/api/notes', (req, res) => {
 
 const generateId = () => {
   const maxId = notes.length > 0
-    ? Math.max(...notes.map(n => n.id))
-    : 0
-  return maxId + 1
+    ? Math.max(...notes.map(n => n.id)) + 1
+    :  1
+  return maxId
 }
 
 app.post('/api/notes', (request, response) => {
   const body = request.body
 
   if (!body.content) {
-    return response.status(400).json({ 
-      error: 'content missing' 
+    return response.status(400).json({
+      error: 'content missing'
     })
   }
 
