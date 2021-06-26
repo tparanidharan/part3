@@ -9,6 +9,10 @@ morgan.token('sample',function ( req) {
   //return JSON.stringify(req.body)
   return `{name:${req.body.name},number:${req.body.number}}`
 })
+app.use(morgan('common', {
+    stream: fs.createWriteStream('./logs/access.log', {flags: 'a'})
+}));
+app.use(logger('dev'));
 
 let persons = [
   {
