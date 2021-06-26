@@ -45,7 +45,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/api/persons', (req, res) => {
-  console.table(persons);
+  console.table(persons); 
   res.json(persons)
 })
 
