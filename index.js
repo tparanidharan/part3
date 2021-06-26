@@ -2,15 +2,16 @@ const express = require('express')
 const app = express()
 const morgan = require('morgan')
 var fs = require('fs')
-const cors = require('cors')
+var path = require('path')
+
 app.use(express.static('build'))
 app.use(express.json())
-app.use(morgan(':date[web] :method :url :status :response-time ms - :res[content-length] :sample'));
-app.use(cors())
-morgan.token('sample',function ( req) {
+//app.use(morgan(':date[web] :method :url :status :response-time ms - :res[content-length] :sample'));
+
+//morgan.token('sample',function ( req) {
   //return JSON.stringify(req.body)
-  return `{name:${req.body.name},number:${req.body.number}}`
-})
+//  return `{name:${req.body.name},number:${req.body.number}}`
+//})
 var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' })
 
 // setup the logger
